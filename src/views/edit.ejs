@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Library System</title>
+</head>
+
+<body>
+    <div data-role="page">
+        <div data-role="header" style="overflow: hidden;">
+            <h1>Library System</h1>
+            <a href="/" data-icon="home" class="ui-btn-left">Home</a>
+        </div>
+        
+        <div role="content" class="ui-content">
+            <form action="/api/books/updateOne/<%= book.book_id %>" method="POST">
+                <label for="bookID"><h4>Book ID:</h4></label>
+                <input type="number" name="book_id" id="bookID" value="<%= book.book_id %>" readonly>
+
+                <label for="txtTitle"><h4>Title:</h4></label>
+                <input type="text" name="title" id="txtTitle" value="<%= book.title %>">
+
+                <label for="txtAuthor"><h4>Author:</h4></label>
+                <input type="text" name="author" id="txtAuthor" value="<%= book.author %>">
+
+                <label for="txtGenre"><h4>Genre:</h4></label>
+                <input type="text" name="genre" id="txtGenre" value="<%= book.genre %>">
+
+                <label for="txtYear"><h4>Year:</h4></label>
+                <input type="number" name="year" id="txtYear" value="<%= book.year %>">
+
+                <button class="ui-btn ui-btn-inline">Update</button>
+            </form>
+        </div>
+
+        <div data-role="footer" style="overflow: hidden;">
+            <h4 style="text-align: center;">Library Management</h4>
+        </div>
+    </div>
+</body>
+
+</html>

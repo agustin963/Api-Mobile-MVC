@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Library Management</title>
+</head>
+
+<body>
+    <div data-role="page">
+        <div data-role="header" style="overflow: hidden;">
+            <h1>Library Management</h1>
+            <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Authors</a></li>
+                    <li><a href="#">Categories</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div role="content" class="ui-content">
+            <form action="/api/books/insert" method="POST">
+                <label for="bookID"><h4>Book ID:</h4></label>
+                <input type="number" name="book_id" id="bookID">
+
+                <label for="txtTitle"><h4>Title:</h4></label>
+                <input type="text" name="title" id="txtTitle">
+
+                <label for="txtAuthor"><h4>Author:</h4></label>
+                <input type="text" name="author" id="txtAuthor">
+
+                <label for="txtGenre"><h4>Genre:</h4></label>
+                <input type="text" name="genre" id="txtGenre">
+
+                <label for="txtYear"><h4>Year:</h4></label>
+                <input type="number" name="year" id="txtYear">
+
+                <button class="ui-btn ui-btn-inline">Save</button>
+            </form>
+
+            <ul data-role="listview" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Search books">
+                <% books.forEach(book => { %>
+                    <div data-role="collapsible" data-content-theme="none">
+                        <h4><%= book.title %></h4>
+                        <p>Book ID: <%= book.book_id %></p>
+                        <p>Title: <%= book.title %></p>
+                        <p>Author: <%= book.author %></p>
+                        <p>Genre: <%= book.genre %></p>
+                        <p>Year: <%= book.year %></p>
+                        <!-- Enlace para editar libro -->
+                        <a href="/api/books/getOne/<%= book.book_id %>" class="ui-btn ui-icon-edit ui-btn-icon-bottom">Edit</a>
+                        <a href="/api/books/deleteOne/<%= book.book_id %>" class="ui-btn ui-icon-delete ui-btn-icon-bottom">Delete</a>
+                    </div>
+                <% }); %>
+            </ul>
+            
+        </div>
+
+        <div data-role="footer" style="overflow: hidden;">
+            <h4 style="text-align: center;">Social Networks</h4>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" data-icon="user"></a></li>
+                    <li><a href="#" data-icon="heart"></a></li>
+                    <li><a href="#" data-icon="mail"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
